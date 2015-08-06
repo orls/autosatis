@@ -31,11 +31,12 @@ class RequirementsMergerSpec extends ObjectBehavior
             )
         );  
 
-        $this->getRequirements(array($in1, $in2))->shouldReturn(array(
-            'package/a' => '*',
-            'package/b' => '*',
-            'package/c' => '*',
-            'package/d' => '*'
-        ));
+        $results = $this->getRequirements(array($in1, $in2));
+
+        $results->shouldHaveCount(4);
+        $results->shouldHaveKeyWithValue('package/a', '*');
+        $results->shouldHaveKeyWithValue('package/b', '*');
+        $results->shouldHaveKeyWithValue('package/c', '*');
+        $results->shouldHaveKeyWithValue('package/d', '*');
     }
 }
