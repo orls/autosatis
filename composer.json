@@ -1,0 +1,17 @@
+{
+    "name": "orls/auto-satis",
+    "type": "library",
+    "config": {
+        "bin-dir": "bin"
+    },
+    "require": {
+    },
+    "require-dev": {
+        "phpspec/phpspec": "2.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Orls\\": "src/Orls"
+        }
+    }
+}
