@@ -14,8 +14,8 @@ class SatisBuilderCommand extends Command
     {
         $this->setName('build');
         $this->addArgument(
-            'sources',
-            InputArgument::IS_ARRAY,
+            'composerJson',
+            InputArgument::IS_ARRAY | InputArgument::REQUIRED,
             'The composer.json file(s) to build the satis conf for (separate' .
             'multiple files with spaces)'
         );
