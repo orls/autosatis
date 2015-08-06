@@ -8,7 +8,8 @@
         "symfony/console": "~2.7"
     },
     "require-dev": {
-        "phpspec/phpspec": "2.2.1"
+        "phpspec/phpspec": "~2.2",
+        "mikey179/vfsStream": "~1.5"
     },
     "autoload": {
         "psr-4": {
