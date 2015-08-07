@@ -23,7 +23,7 @@ class RequirementsMergerSpec extends ObjectBehavior
 
         $in2 = array(
             'require' => array(
-                "package/a" => "0.1",
+                "package/a" => "0.2",
                 "package/c" => "0.2"
             ),
             'require-dev' => array(
@@ -34,9 +34,9 @@ class RequirementsMergerSpec extends ObjectBehavior
         $results = $this->getRequirements(array($in1, $in2));
 
         $results->shouldHaveCount(4);
-        $results->shouldHaveKeyWithValue('package/a', '*');
-        $results->shouldHaveKeyWithValue('package/b', '*');
-        $results->shouldHaveKeyWithValue('package/c', '*');
-        $results->shouldHaveKeyWithValue('package/d', '*');
+        $results->shouldHaveKeyWithValue('package/a', '0.1 || 0.2');
+        $results->shouldHaveKeyWithValue('package/b', '0.2');
+        $results->shouldHaveKeyWithValue('package/c', '0.2');
+        $results->shouldHaveKeyWithValue('package/d', '0.2');
     }
 }

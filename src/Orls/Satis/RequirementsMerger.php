@@ -15,17 +15,24 @@ class RequirementsMerger
     {
         $requirements = array();
 
-        foreach ($sources as $sourceFile)
-        {
+        foreach ($sources as $sourceFile) {
             foreach (array('require', 'require-dev') as $key) {
-                if (array_key_exists($key, $sourceFile))
-                {
-                    foreach($sourceFile[$key] as $package => $version)
-                    {
-                        $requirements[$package] = '*';
+                if (!array_key_exists($key, $sourceFile)) {
+                    continue;
+                }
+
+                foreach ($sourceFile[$key] as $package => $version) {
+                    if (!array_key_exists($package, $requirements)) {
+                        $requirements[$package] = array();
                     }
+                    $requirements[$package] []= $version;
                 }
             }
+        }
+
+        foreach ($requirements as $package => &$versions) {
+
+            $versions = implode(' || ' , array_unique($versions));
         }
 
         return $requirements;
